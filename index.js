@@ -1,13 +1,24 @@
-const http = require("http");
-const host = '0.0.0.0';
-const port = 8000;
+var express = require('express');
+var axios = require('axios') 
 
-const requestListener = function (req, res) {
-    res.writeHead(200);
-    res.end("My first server!");
-};
+var app = express();
 
-const server = http.createServer(requestListener);
-server.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
+app.get('/', function (req, res) {
+  res.send("Yay, my webserver's up!");
+});
+
+app.get('/contentAt/:id', function (req, res) {
+  let base = `https://www.googleapis.com/drive/v3/files/${req.params.id}?&key=${process.env['API_KEY']}&alt=media`;
+  let url = `https://api.allorigins.win/raw?url=${encodeURIComponent(base)}`;
+  axios.get(url) 
+    .then(dat => res.send(dat.data)) 
+    .catch(err => res.send(err))
+});
+
+app.use(function(req, res, next) {
+  res.status(404).send("oof, we couldn't find that :/");
+});
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000.');
 });
