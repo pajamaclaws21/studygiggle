@@ -8,8 +8,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/contentAt/:id', function (req, res) {
-  let base = `https://www.googleapis.com/drive/v3/files/${req.params.id}?&key=${process.env['API_KEY']}&alt=media`;
-  let url = `https://api.allorigins.win/raw?url=${encodeURIComponent(base)}`;
+  let url = `https://www.googleapis.com/drive/v3/files/${req.params.id}?&key=${process.env['API_KEY']}&alt=media`;
   axios.get(url) 
     .then(dat => res.send(dat.data)) 
     .catch(err => res.send(err))
