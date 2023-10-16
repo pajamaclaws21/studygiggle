@@ -1,0 +1,34 @@
+<script>
+window.addEventListener('message', function (e) {
+  if (e.data.selector == "getVar") {
+    alert(`Drive ID: ${e.data.response}`);
+  }
+}, false);
+
+function runApi(sel, par) {
+  document.getElementById('viewer').contentWindow.postMessage(
+    { selector: sel, params: par },
+    '*'
+  );
+}
+
+function loadProj(usn, prn) {
+  let data = "Username=" + usn + "&ProjectName=" + encodeURIComponent(prn);
+  let tags = "&embedMode&noExitWarning&noRun";
+  let mySRC = "https://snap.berkeley.edu/snap.html#present:" + data + tags;
+  document.getElementById('viewer').src = mySRC;
+}
+</script>
+
+<button onclick="loadProj('pajamaclaws21', 'DRIVE LOADER TEST')">Load project</button>
+
+<button onclick="runApi('getVar', ['driveID'])">Get driveID</button>
+<br>
+<iframe 
+  id="viewer"
+  width="480"
+  height="390" 
+  frameBorder=0 
+  allowfullscreen 
+  allow="geolocation; microphone; camera"
+</iframe>
