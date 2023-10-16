@@ -7,4 +7,4 @@ here's the current method:
 
 
 ## license
-this project is licensed under a modified ISC license. see the licens.e file for more details.
+this project is licensed under a modified ISC license. see the "pj's license" file for more details.
