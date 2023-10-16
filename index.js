@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 
 app.get('/contentAt/:id', function (req, res) {
   let url = `https://www.googleapis.com/drive/v3/files/${req.params.id}?&key=${process.env['API_KEY']}&alt=media`;
-  fetch(url, {referrer: "about:client"})
+  fetch(url, {referrer: "https://studygiggle.onrender.com/"})
     .then(data => data.text())
     .then(text => res.send(text));
 });
