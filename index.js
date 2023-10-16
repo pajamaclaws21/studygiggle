@@ -1,5 +1,5 @@
 var express = require('express');
-var fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 var app = express();
 
