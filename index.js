@@ -1,5 +1,5 @@
 var express = require('express');
-var axios = require('axios') 
+var fetch = require('node-fetch');
 
 var app = express();
 
@@ -9,9 +9,9 @@ app.get('/', function (req, res) {
 
 app.get('/contentAt/:id', function (req, res) {
   let url = `https://www.googleapis.com/drive/v3/files/${req.params.id}?&key=${process.env['API_KEY']}&alt=media`;
-  axios.get(url, {headers: {referer: 'https://studygiggle.onrender.com'}}) 
-    .then(dat => res.send(dat.data)) 
-    .catch(err => res.send(err))
+  fetch(url)
+    .then(data => data.text())
+    .then(text => res.send(text));
 });
 
 app.use(function(req, res, next) {
