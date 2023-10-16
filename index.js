@@ -1,4 +1,4 @@
-var express = require('express');
+import express from 'express';
 import fetch from 'node-fetch';
 
 var app = express();
