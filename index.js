@@ -4,6 +4,7 @@ var cors = require('cors');
 
 var app = express();
 app.use(cors());
+axios.defaults.headers.common['referer'] = 'https://studygiggle.onrender.com';
 
 app.get('/', function (req, res) {
   res.send("Yay, my webserver's up!");
