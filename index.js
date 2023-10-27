@@ -7,7 +7,7 @@ app.use(cors());
 axios.defaults.headers.common['referer'] = 'https://studygiggle.onrender.com';
 
 app.get('/', function (req, res) {
-  res.send("Yay, my webserver's up!");
+  res.sendFile(__dirname + '/squiggle.html');
 });
 
 app.get('/contentAt/:id', function (req, res) {
