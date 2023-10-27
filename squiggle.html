@@ -1,7 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="description" content="Google Drive loader for Snap!" />
+	<meta charset="utf-8">
+	<title>Studygiggle!!</title>
+	<meta name="author" content="pajamaclaws21">
+</head>
+<body>
+
+
 <script>
+	function sleep(ms){
+  var timer;
+  timer = setInterval(function(){
+    console.log("Slept");
+    clearInterval(timer);
+  }, ms)
+}
 window.addEventListener('message', function (e) {
   if (e.data.selector == "getVar") {
-    alert(`Drive ID: ${e.data.response}`);
+    console.log(`Drive ID: ${e.data.response}`);
+    let base = `https://studygiggle.onrender.com/contentAt/${e.data.response}`;
+    
+    fetch(base)
+      .then(res => res.text())
+      .then((text) => {
+        console.log("Project loaded from Google Drive!");
+        runApi('loadProjectXML', [text]);
+        document.getElementById("Part2").hidden = true;
+        document.getElementById("helper").hidden = true;
+        document.getElementById("viewer").style = "position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;";
+      })
   }
 }, false);
 
@@ -12,23 +42,27 @@ function runApi(sel, par) {
   );
 }
 
-function loadProj(usn, prn) {
-  let data = "Username=" + usn + "&ProjectName=" + encodeURIComponent(prn);
-  let tags = "&embedMode&noExitWarning&noRun";
+function loadProject() {
+  let data = "Username=" + document.getElementById('user').value + "&ProjectName=" + encodeURIComponent(document.getElementById('proj').value);
+  let tags = "&noExitWarning&noRun";
   let mySRC = "https://snap.berkeley.edu/snap.html#present:" + data + tags;
   document.getElementById('viewer').src = mySRC;
+  document.getElementById("user").hidden = true;
+  document.getElementById("proj").hidden = true;
+  document.getElementById("Part1").hidden = true;
+  document.getElementById("Part2").hidden = false;
+  document.getElementById("helper").innerText = "Wait to press the button until you can see the project!";
 }
 </script>
 
-<button onclick="loadProj('pajamaclaws21', 'DRIVE LOADER TEST')">Load project</button>
-
-<button onclick="runApi('getVar', ['driveID'])">Get driveID</button>
+<p id="helper">Type in the username and project name of the project you want to load.</p>
+<input id="user" placeholder="Username">
+<input id="proj" placeholder="Project Name">
+<button id="Part1" onclick="loadProject()">Load Project</button>
+<button id="Part2" onclick="runApi('getVar', ['driveID'])" hidden>Get Project from Drive</button>
 <br>
-<iframe 
-  id="viewer"
-  width="480"
-  height="390" 
-  frameBorder=0 
-  allowfullscreen 
-  allow="geolocation; microphone; camera"
-</iframe>
+<iframe id="viewer" width="480" height="390" frameBorder=0 allowfullscreen
+	allow="geolocation; microphone; camera" </iframe>
+
+</body>
+</html>
