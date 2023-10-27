@@ -14,7 +14,8 @@ app.get('/contentAt/:id', function (req, res) {
   //fetch(url, {referrer: "https://studygiggle.onrender.com/"})
   axios.get(url)
     .then(newRes => newRes.data)
-    .then(text => res.send(text));
+    .then(text => res.send(text))
+    .catch(err => res.send(`what?? an error?? here it is: ${err}`));
 });
 
 app.use(function(req, res, next) {
