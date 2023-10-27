@@ -27,3 +27,6 @@ This is something I've wanted to make for a while, and I'm glad to finally put i
 
 ## license
 this project is licensed under a modified ISC license. see the "pj's license" file for more details.
+
+## interested in hosting your own?
+coolio!! my build command is 'npm install' and my start command is 'node index.js'. you're gonna need a Google Drive API Key and set an environment variable called "API_KEY" to that.
