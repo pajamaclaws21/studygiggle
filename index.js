@@ -22,7 +22,7 @@ app.get('/contentAt/:id', function (req, res) {
 });
 
 app.post('/upload', function(req, res) {
-  res.send(req.query);
+  res.send(req.body);
 });
 
 app.use(function(req, res, next) {
