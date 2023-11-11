@@ -19,6 +19,10 @@ app.get('/contentAt/:id', function (req, res) {
     .catch(err => res.send(`what?? an error?? here it is: ${err}`));
 });
 
+app.post('/upload', function(req, res) {
+  res.send(req.body);
+));
+
 app.use(function(req, res, next) {
   res.status(404).send("oof, we couldn't find that :/");
 });
