@@ -5,7 +5,6 @@ var cors = require('cors');
 var app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 
 axios.defaults.headers.common['referer'] = 'https://studygiggle.onrender.com';
 
