@@ -22,7 +22,7 @@ app.get('/contentAt/:id', function (req, res) {
 });
 
 app.post('/upload', function(req, res) {
-  res.send(Object.getOwnPropertyNames(req));
+  res.send(req.query);
 });
 
 app.use(function(req, res, next) {
