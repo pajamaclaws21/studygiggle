@@ -1,10 +1,17 @@
+/*
 var express = require('express');
 var axios = require('axios') 
 var cors = require('cors');
 var formidable = require('formidable');
+*/
+
+import express from "express";
+import axios from "axios";
+import formidable from "formidable";
+
 
 var app = express();
-app.use(cors());
+//app.use(cors());
 app.use(express.json());
 
 
