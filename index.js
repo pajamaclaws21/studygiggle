@@ -11,9 +11,8 @@ import axios from "axios";
 import formidable from "formidable";
 
 // Allows usage of __dirname
-import dirname from "path";
-import fileURLToPath from "url";
-var __dirname = dirname(fileURLToPath(import.meta.url));
+import * as url from "url";
+var __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 // Middleware
 var app = express();
