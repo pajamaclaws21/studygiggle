@@ -6,6 +6,10 @@ var app = express();
 app.use(cors());
 app.use(express.json());
 
+// trying out bodyParser?
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 axios.defaults.headers.common['referer'] = 'https://studygiggle.onrender.com';
 
 app.get('/', function (req, res) {
@@ -22,7 +26,7 @@ app.get('/contentAt/:id', function (req, res) {
 });
 
 app.post('/upload', function(req, res) {
-  res.send(req.body);
+  res.send(JSON.stringify(req.body.file));
 });
 
 app.use(function(req, res, next) {
