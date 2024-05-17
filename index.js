@@ -5,11 +5,17 @@ var cors = require('cors');
 var formidable = require('formidable');
 */
 
+// Libraries
 import express from "express";
 import axios from "axios";
 import formidable from "formidable";
 
+// Allows usage of __dirname
+import dirname from "path";
+import fileURLToPath from "url";
+var __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Middleware
 var app = express();
 //app.use(cors());
 app.use(express.json());
@@ -17,6 +23,7 @@ app.use(express.json());
 
 axios.defaults.headers.common['referer'] = 'https://studygiggle.onrender.com';
 
+// Routes
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/squiggle.html');
 });
