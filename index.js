@@ -1,14 +1,12 @@
 var express = require('express');
 var axios = require('axios') 
 var cors = require('cors');
+var formidable = require('formidable');
 
 var app = express();
 app.use(cors());
 app.use(express.json());
 
-// trying out bodyParser?
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
 
 axios.defaults.headers.common['referer'] = 'https://studygiggle.onrender.com';
 
@@ -25,8 +23,16 @@ app.get('/contentAt/:id', function (req, res) {
     .catch(err => res.send(`what?? an error?? here it is: ${err}`));
 });
 
-app.post('/upload', function(req, res) {
-  res.send(JSON.stringify(req.body.file));
+app.post('/upload', function(req, res, next) {
+  const form = formidable({});
+
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.json({ fields, files });
+  });
 });
 
 app.use(function(req, res, next) {
