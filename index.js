@@ -44,7 +44,7 @@ app.post('/upload', function(req, res, next) {
       next(err);
       return;
     }
-    res.json(Object.getOwnPropertyNames(files));
+    res.json(Object.getOwnPropertyNames(files.file));
   });
 });
 
