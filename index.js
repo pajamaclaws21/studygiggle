@@ -41,6 +41,10 @@ app.get('/favicon/:type', function(req, res) {
   res.sendFile(__dirname + "/favicon/" + req.params.type);
 });
 
+app.get('/manifest', function(req, res) {
+  res.sendFile(__dirname + "/site.webmanifest");
+});
+
 app.post('/upload', function(req, res, next) {
   const form = formidable({});
 
