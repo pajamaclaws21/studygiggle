@@ -41,6 +41,10 @@ app.get('/favicon/:type', function(req, res) {
   res.sendFile(__dirname + "/favicon/" + req.params.type);
 });
 
+app.get('/src/:file', function(req, res) {
+  res.sendFile(__dirname + "/src/" + req.params.file);
+});
+
 app.get('/manifest', function(req, res) {
   res.sendFile(__dirname + "/site.webmanifest");
 });
@@ -56,7 +60,7 @@ app.post('/upload', function(req, res, next) {
     try {
       const data = fs.readFileSync(files.file.filepath, 'utf8');
       res.json(data);
-      
+
     } catch (err) {
       res.json(err);
     }
