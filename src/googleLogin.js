@@ -1,5 +1,7 @@
 function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
+    console.log("Auth'd with Google!");
+    console.log(response.credential);
+    // Pass to backend
 }
   
 window.onload = function () {
