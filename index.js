@@ -53,7 +53,7 @@ app.post('/upload', function(req, res, next) {
       res.json(err);
     }
 
-    let path = files.file.filepath + "/" + files.file.newFilename + ".xml";
+    let path = files.file.filepath;
 
     try {
       const data = fs.readFileSync(path, 'utf8');
