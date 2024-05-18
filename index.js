@@ -54,9 +54,9 @@ app.post('/upload', function(req, res, next) {
     } catch (err) {
       res.json(err);
     }*/
-  });
 
-  res.json(Object.getOwnPropertyNames(files.file));
+    res.json(Object.getOwnPropertyNames(files.file));
+  });
 });
 
 app.use(function(req, res, next) {
