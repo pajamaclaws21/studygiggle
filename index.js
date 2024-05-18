@@ -37,6 +37,10 @@ app.get('/contentAt/:id', function (req, res) {
     .catch(err => res.send(`what?? an error?? here it is: ${err}`));
 });
 
+app.get('/favicon/:type', function(req, res) {
+  res.sendFile(__dirname + "/favicon/" + req.params.type);
+});
+
 app.post('/upload', function(req, res, next) {
   const form = formidable({});
 
