@@ -9,6 +9,7 @@ var formidable = require('formidable');
 import express from "express";
 import axios from "axios";
 import formidable from "formidable";
+import fs from "node:fs";
 
 // Allows usage of __dirname
 import * as url from "url";
@@ -41,10 +42,16 @@ app.post('/upload', function(req, res, next) {
 
   form.parse(req, (err, fields, files) => {
     if (err) {
-      next(err);
-      return;
+      res.json(err);
     }
-    res.json([files.file.filepath, files.file._writeStream]);
+
+    let path = files.file.filepath;
+    try {
+      const data = fs.readFileSync(__dirname + path, 'utf8');
+      res.json(data);
+    } catch (err) {
+      res.json(err);
+    }
   });
 });
 
