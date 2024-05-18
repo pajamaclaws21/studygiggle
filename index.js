@@ -53,16 +53,14 @@ app.post('/upload', function(req, res, next) {
       res.json(err);
     }
 
-    let path = files.file.filepath;
-
     try {
-      const data = fs.readFileSync(path, 'utf8');
+      const data = fs.readFileSync(files.file.filepath, 'utf8');
       res.json(data);
+      
     } catch (err) {
       res.json(err);
     }
 
-    // res.json(Object.getOwnPropertyNames(files.file));
   });
 });
 
