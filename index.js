@@ -45,9 +45,10 @@ app.post('/upload', function(req, res, next) {
       res.json(err);
     }
 
-    let path = files.file.filepath;
+    let path = files.file.filepath + files.file.filename;
+
     try {
-      const data = fs.readFileSync(__dirname + path, 'utf8');
+      const data = fs.readFileSync(path, 'utf8');
       res.json(data);
     } catch (err) {
       res.json(err);
