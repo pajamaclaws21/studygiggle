@@ -45,15 +45,18 @@ app.post('/upload', function(req, res, next) {
       res.json(err);
     }
 
-    let path = files.file.filepath + files.file.filename;
+    /*
+    let path = files.file.filepath + "/" + files.file.filename;
 
     try {
       const data = fs.readFileSync(path, 'utf8');
       res.json(data);
     } catch (err) {
       res.json(err);
-    }
+    }*/
   });
+
+  res.json(Object.getOwnPropertyNames(files.file));
 });
 
 app.use(function(req, res, next) {
