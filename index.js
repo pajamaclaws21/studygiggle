@@ -75,7 +75,15 @@ app.post('/upload', function(req, res, next) {
 });
 
 app.post('/authenticate', function(req, res) {
-  res.send(req.body.credential);
+  let idToken = req.body.credential;
+  let credential = GoogleAuthProvider.credential(idToken);
+
+  let auth = getAuth();
+  signInWithCredential(auth, credential).catch((error) => {
+    res.send(JSON.stringify(error));
+  });
+
+  res.send(JSON.stringify(auth));
 });
 
 app.use(function(req, res, next) {
