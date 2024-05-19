@@ -22,6 +22,13 @@ var app = express();
 //app.use(cors());
 app.use(express.json());
 
+// Firebase stuff
+var firebaseConfig = {
+  //...
+};
+
+var firebaseapp = initializeApp(firebaseConfig);
+
 
 axios.defaults.headers.common['referer'] = 'https://studygiggle.onrender.com';
 
@@ -79,7 +86,7 @@ app.post('/authenticate', function(req, res) {
   let credential = GoogleAuthProvider.credential(idToken);
 
   try {
-    let auth = getAuth();
+    let auth = getAuth(firebaseapp);
     res.send("getAuth success!");
     
   } catch (err) {
