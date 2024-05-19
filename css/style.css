@@ -1,6 +1,6 @@
 body {
-    background: #393939;
-    color: white;
+    background: #ffffff;
+    color: black;
     font-family: helvetica;
     text-align: center;
 }
@@ -8,15 +8,15 @@ body {
 input {
     border-radius: 4px;
     padding: 5px;
-    border-style: none;
-    background: #666666;
+    border: 1px solid #cccccc;
+    background: #dddddd;
 }
 
 input::placeholder {
-  color: white;
+  color: #888888;
 }
 
-button {
+button, input[type=submit] {
     padding: 5px;
     border-radius: 4px;
     background: #666666;
@@ -25,5 +25,5 @@ button {
 }
 
 a {
-    color: #66b3ff;
+    color: #aa86ff;
 }
