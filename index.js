@@ -78,9 +78,13 @@ app.post('/authenticate', function(req, res) {
   let idToken = req.body.credential;
   let credential = GoogleAuthProvider.credential(idToken);
 
-  let auth = getAuth().catch(err => res.send(err));
-
-  res.send("getAuth success!");
+  try {
+    let auth = getAuth();
+    res.send("getAuth success!");
+    
+  } catch (err) {
+    res.json(err);
+  }
 
   /*
   signInWithCredential(auth, credential).catch((error) => {
