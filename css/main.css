@@ -14,7 +14,7 @@ input {
     background: #dddddd;
 }
 
-input::placeholder {
+input::placeholder, input[type=submit] {
   color: #888888;
 }
 
