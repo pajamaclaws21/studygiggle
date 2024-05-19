@@ -3,7 +3,7 @@ function handleCredentialResponse(response) {
     let body = {"credential": response.credential};
 
     fetch("https://studygiggle.onrender.com/authenticate", 
-        {method: "POST", body: body}).then((res) => { console.log(res) });
+        {method: "POST", body: body}).then((res) => { console.log(res.body) });
 
 }
   
