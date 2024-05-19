@@ -87,7 +87,7 @@ app.post('/signIn', function(req, res) {
     res.send(JSON.stringify(error));
   });
 
-  res.send(auth.currentUser);
+  res.send(auth);
 });
 
 app.use(function(req, res, next) {
