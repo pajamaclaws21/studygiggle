@@ -2,7 +2,15 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
-var firebaseConfig = process.env["FIREBASE_CONFIG"]; // this env variable contains my copy-pasted firebaseConfig! so it's alreayd in JSON
+var firebaseConfig = {
+  apiKey: process.env["FIREBASE_API_KEY"],
+  authDomain: process.env["FIREBASE_PROJECT_ID"] + ".firebaseapp.com",
+  projectId: process.env["FIREBASE_PROJECT_ID"],
+  storageBucket: process.env["FIREBASE_PROJECT_ID"] + ".appspot.com",
+  messagingSenderId: process.env["FIREBASE_MESSAGING_SENDER_ID"],
+  appId: process.env["FIREBASE_APP_ID"],
+  measurementId: process.env["FIREBASE_MEASUREMENT_ID"]
+};
 var firebaseapp = initializeApp(firebaseConfig);
 var analytics = getAnalytics(firebaseapp);
 
