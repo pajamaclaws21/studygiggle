@@ -14,11 +14,11 @@ input {
     background: #dddddd;
 }
 
-input::placeholder, input[type=submit] {
+input::placeholder {
   color: #888888;
 }
 
-button {
+button, input[type=submit] {
     padding: 5px;
     border-radius: 4px;
     background: #666666;
