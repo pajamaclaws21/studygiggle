@@ -73,7 +73,7 @@ app.post('/upload', function(req, res, next) {
 });
 
 app.post('/authenticate', function(req, res) {
-  res.send(req.body);
+  res.json(req.body);
 });
 
 app.use(function(req, res, next) {
