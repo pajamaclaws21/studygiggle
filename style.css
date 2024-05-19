@@ -1,0 +1,29 @@
+body {
+    background: #393939;
+    color: white;
+    font-family: helvetica;
+    text-align: center;
+}
+
+input {
+    border-radius: 4px;
+    padding: 5px;
+    border-style: none;
+    background: #666666;
+}
+
+input::placeholder {
+  color: white;
+}
+
+button {
+    padding: 5px;
+    border-radius: 4px;
+    background: #666666;
+    border-style: none;
+    color: white;
+}
+
+a {
+    color: #66b3ff;
+}
