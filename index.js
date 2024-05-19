@@ -75,7 +75,8 @@ app.post('/upload', function(req, res, next) {
 });
 
 app.post('/authenticate', function(req, res) {
-  res.send(req.body.credential);
+  res.send("Success!");
+  //res.send(req.body.credential);
 });
 
 app.use(function(req, res, next) {
