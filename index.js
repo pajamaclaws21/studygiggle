@@ -78,7 +78,7 @@ app.post('/upload', function(req, res, next) {
   });
 });
 
-app.post('/authenticate', function(req, res) {
+app.post('/signIn', function(req, res) {
   let idToken = req.body.credential;
   let credential = GoogleAuthProvider.credential(idToken);
   let auth = getAuth(firebaseapp);
@@ -87,7 +87,10 @@ app.post('/authenticate', function(req, res) {
     res.send(JSON.stringify(error));
   });
 
-  res.send(JSON.stringify(auth));
+  let user = auth.currentUser;
+  let signedIn = (auth.currentUser !== null);
+
+  res.send(JSON.stringify(user));
 });
 
 app.use(function(req, res, next) {
