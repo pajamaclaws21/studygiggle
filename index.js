@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
-var firebaseConfig = process.env["FIREBASE_CONFIG"];
+var firebaseConfig = process.env["FIREBASE_CONFIG"]; // this env variable contains my copy-pasted firebaseConfig! so it's alreayd in JSON
 var firebaseapp = initializeApp(firebaseConfig);
 var analytics = getAnalytics(firebaseapp);
 
