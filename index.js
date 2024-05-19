@@ -58,22 +58,22 @@ app.post('/upload', function(req, res, next) {
 
   form.parse(req, (err, fields, files) => {
     if (err) {
-      res.json(err);
+      res.send(err);
     }
 
     try {
       const data = fs.readFileSync(files.file.filepath, 'utf8');
-      res.json(data);
+      res.send(data);
 
     } catch (err) {
-      res.json(err);
+      res.send(err);
     }
 
   });
 });
 
 app.post('/authenticate', function(req, res) {
-  res.json(req.body);
+  res.send(req.body);
 });
 
 app.use(function(req, res, next) {
