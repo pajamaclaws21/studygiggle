@@ -6,10 +6,10 @@ var formidable = require('formidable');
 */
 
 // Libraries
-import { express } from "express";
-import { axios } from "axios";
-import { formidable } from "formidable";
-import { fs } from "node:fs";
+import express from "express";
+import axios from "axios";
+import formidable from "formidable";
+import fs from "node:fs";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
 
