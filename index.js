@@ -1,6 +1,5 @@
 // Firebase Libraries
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
 var firebaseConfig = {
   apiKey: process.env["FIREBASE_API_KEY"],
@@ -12,7 +11,6 @@ var firebaseConfig = {
   measurementId: process.env["FIREBASE_MEASUREMENT_ID"]
 };
 var firebaseapp = initializeApp(firebaseConfig);
-var analytics = getAnalytics(firebaseapp);
 
 // Libraries
 import express from "express";
