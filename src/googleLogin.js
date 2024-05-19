@@ -2,7 +2,12 @@ function handleCredentialResponse(response) {
     console.log("Auth'd with Google!");
     let body = {"credential": response.credential};
 
-    fetch("https://studygiggle.onrender.com/authenticate", {method: "POST", mode: "cors", body: JSON.stringify(body)})
+    fetch("https://studygiggle.onrender.com/authenticate", {
+        method: "POST", 
+        mode: "cors",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+    })
         .then(res => res.json())
         .then((text) => { console.log(text); });
 
