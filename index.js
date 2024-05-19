@@ -80,7 +80,7 @@ app.post('/authenticate', function(req, res) {
 
   let auth = getAuth().catch(err => res.send(err));
 
-  res.send("Yay?");
+  res.send("getAuth success!");
 
   /*
   signInWithCredential(auth, credential).catch((error) => {
