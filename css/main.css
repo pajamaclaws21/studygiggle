@@ -1,0 +1,31 @@
+/* Original CSS code by @joecooldoo on the Snap! Forums. */
+
+body {
+    background: #ffffff;
+    color: black;
+    font-family: helvetica;
+    text-align: center;
+}
+
+input {
+    border-radius: 4px;
+    padding: 5px;
+    border: 1px solid #cccccc;
+    background: #dddddd;
+}
+
+input::placeholder {
+  color: #888888;
+}
+
+button {
+    padding: 5px;
+    border-radius: 4px;
+    background: #666666;
+    border: none;
+    color: white;
+}
+
+a {
+    color: #aa86ff;
+}

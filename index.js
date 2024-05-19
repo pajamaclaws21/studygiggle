@@ -45,6 +45,10 @@ app.get('/src/:file', function(req, res) {
   res.sendFile(__dirname + "/src/" + req.params.file);
 });
 
+app.get('/css/:file', function(req, res) {
+  res.sendFile(__dirname + "/css/" + req.params.file);
+});
+
 app.get('/manifest', function(req, res) {
   res.sendFile(__dirname + "/site.webmanifest");
 });
