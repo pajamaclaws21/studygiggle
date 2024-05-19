@@ -1,17 +1,16 @@
-/*
-var express = require('express');
-var axios = require('axios') 
-var cors = require('cors');
-var formidable = require('formidable');
-*/
+// Firebase Libraries
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
+var firebaseConfig = JSON.parse(process.env["FIREBASE_CONFIG"]);
+var firebaseapp = initializeApp(firebaseConfig);
+var analytics = getAnalytics(firebaseapp);
 
 // Libraries
 import express from "express";
 import axios from "axios";
 import formidable from "formidable";
 import fs from "node:fs";
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
 
 // Allows usage of __dirname
 import * as url from "url";
@@ -21,14 +20,6 @@ var __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 var app = express();
 //app.use(cors());
 app.use(express.json());
-
-// Firebase stuff
-var firebaseConfig = {
-  //...
-};
-
-var firebaseapp = initializeApp(firebaseConfig);
-
 
 axios.defaults.headers.common['referer'] = 'https://studygiggle.onrender.com';
 
