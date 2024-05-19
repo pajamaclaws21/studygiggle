@@ -1,8 +1,11 @@
 function handleCredentialResponse(response) {
     console.log("Auth'd with Google!");
+    console.log({"credential": response.credential});
 
+    /*
     fetch("https://studygiggle.onrender.com/authenticate", 
         {method: "POST", body: {"credential": response.credential}}).then((res) => { console.log(res.json()) });
+    */
 }
   
 window.onload = function () {
