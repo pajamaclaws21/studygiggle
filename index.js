@@ -6,10 +6,11 @@ var formidable = require('formidable');
 */
 
 // Libraries
-import express from "express";
-import axios from "axios";
-import formidable from "formidable";
-import fs from "node:fs";
+import { express } from "express";
+import { axios } from "axios";
+import { formidable } from "formidable";
+import { fs } from "node:fs";
+import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
 
 // Allows usage of __dirname
 import * as url from "url";
