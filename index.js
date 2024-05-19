@@ -9,6 +9,9 @@ var formidable = require('formidable');
 import express from "express";
 import axios from "axios";
 import formidable from "formidable";
+import fs from "node:fs";
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
 
 // Allows usage of __dirname
 import * as url from "url";
@@ -36,16 +39,60 @@ app.get('/contentAt/:id', function (req, res) {
     .catch(err => res.send(`what?? an error?? here it is: ${err}`));
 });
 
+app.get('/favicon/:type', function(req, res) {
+  res.sendFile(__dirname + "/favicon/" + req.params.type);
+});
+
+app.get('/src/:file', function(req, res) {
+  res.sendFile(__dirname + "/src/" + req.params.file);
+});
+
+app.get('/css/:file', function(req, res) {
+  res.sendFile(__dirname + "/css/" + req.params.file);
+});
+
+app.get('/manifest', function(req, res) {
+  res.sendFile(__dirname + "/site.webmanifest");
+});
+
 app.post('/upload', function(req, res, next) {
   const form = formidable({});
 
   form.parse(req, (err, fields, files) => {
     if (err) {
-      next(err);
-      return;
+      res.json(err);
     }
-    res.json({ fields, files });
+
+    try {
+      const data = fs.readFileSync(files.file.filepath, 'utf8');
+      res.json(data);
+
+    } catch (err) {
+      res.json(err);
+    }
+
   });
+});
+
+app.post('/authenticate', function(req, res) {
+  let idToken = req.body.credential;
+  let credential = GoogleAuthProvider.credential(idToken);
+
+  try {
+    let auth = getAuth();
+    res.send("getAuth success!");
+    
+  } catch (err) {
+    res.json(err);
+  }
+
+  /*
+  signInWithCredential(auth, credential).catch((error) => {
+    res.send(JSON.stringify(error));
+  });
+
+  res.send(JSON.stringify(auth));
+  */
 });
 
 app.use(function(req, res, next) {
