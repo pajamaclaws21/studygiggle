@@ -9,7 +9,15 @@ function handleCredentialResponse(response) {
         body: JSON.stringify(body)
     })
         .then(res => res.json())
-        .then((text) => { console.log(text); });
+        .then((auth) => { 
+            if auth.currentUser {
+                console.log(auth);
+                alert("Auth Successful");
+            } else {
+                console.log(auth);
+                alert("Auth Unsuccessful");
+            }
+         });
 
 }
   
