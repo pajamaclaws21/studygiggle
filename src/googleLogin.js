@@ -11,15 +11,15 @@ function handleCredentialResponse(response) {
         .then(res => res.json())
         .then((json) => { 
             if (json.currentUser) {
+                console.log("Recieved object from POST to /signIn contained currentUser object.");
+                console.log("Recieved this JSON:");
+                console.log(json);
+                alert("Signed in with Google!");
+            } else {
                 console.log("Returned object from POST to /signIn didn't contain currentUser object.");
                 console.log("Recieved this JSON:");
                 console.log(json);
                 alert("Signing in with Google didn't work. Try again?");
-            } else {
-                console.log("Recieved object from POST to /signIn contained currentUser object.");
-                console.log("Recieved this JSON:");
-                console.log(json);
-                alert("Auth Unsuccessful");
             }
          });
 
