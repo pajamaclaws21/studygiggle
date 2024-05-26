@@ -9,12 +9,12 @@ function handleCredentialResponse(response) {
         body: JSON.stringify(body)
     })
         .then(res => res.json())
-        .then((auth) => { 
-            if auth.currentUser {
-                console.log(auth);
+        .then((json) => { 
+            if (json.currentUser) {
+                console.log(json);
                 alert("Auth Successful");
             } else {
-                console.log(auth);
+                console.log(json);
                 alert("Auth Unsuccessful");
             }
          });
