@@ -69,7 +69,8 @@ app.post('/upload', function(req, res, next) {
 
     try {
       const data = fs.readFileSync(files.file.filepath, 'utf8');
-      res.json(data);
+      res.send(res.fields.projectName);
+      // res.json(data);
 
     } catch (err) {
       res.json(err);
