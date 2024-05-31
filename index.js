@@ -75,11 +75,8 @@ app.post('/upload', function(req, res, next) {
       axios.post(`https://snap.berkeley.edu/projects/${username}/${projectName}`, {
         xml: data,
         notes: "Uploaded from Studygiggle."
-      }).then(result => {
-        res.json(result.data);
-      }).catch (err) {
-        res.json(err);
-      }
+      }).then(result => res.json(result.data))
+        .catch(err => res.json(err));
   
     } catch (err) {
       res.json(err);
