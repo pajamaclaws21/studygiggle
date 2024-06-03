@@ -31,7 +31,28 @@
 SNAP! LOGIN TEST -- attempting to be able to log in with Snap! <br>
 
 <script src="https://cloud.snap.berkeley.edu/static/js/sha512.js"></script>
-<script src="https://studygiggle.onrender.com/src/snapLogin.js"></script>
+
+<script>
+	function snapLogin() {
+    let username = document.getElementById("login-username").value;
+    let password = document.getElementById("login-password").value;
+
+    fetch(`https://cloud.snap.berkeley.edu/api/v1/users/${username}/login`, {
+        method: "POST", 
+        mode: "cors",
+        body: JSON.stringify({
+            password: hex_sha512(password)
+        })
+    }).then(res => res.json())
+      .then((json) => {
+        alert("Recieved response to login.");
+        console.log(json);
+    })
+      .catch((err) => {
+        console.log(err[0]);
+    })
+}
+</script>
 
 <label for="login-username">Snap! Username:</label>
 <input type="text" autocomplete="off" id="login-username" name="login-username">
