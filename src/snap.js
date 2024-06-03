@@ -14,7 +14,7 @@ function snapLogin() {
 }
 
 function snapUpload() {
-    let username = cloud.getCurrentUser((response) => {return response}), (response) => {
+    let username = cloud.getCurrentUser((response) => {return response}, (response) => {
         alert("Username Failed!");
         break
     });
