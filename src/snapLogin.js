@@ -10,9 +10,11 @@ function snapLogin() {
         })
     }).then(res => res.json())
       .then((json) => {
+        alert("Recieved response to login.");
         console.log(json);
     })
       .catch((err) => {
-        console.log(err);
+        alert("An error occurred logging in.");
+        console.log(err[0]);
     })
 }
