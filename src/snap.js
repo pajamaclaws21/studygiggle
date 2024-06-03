@@ -14,10 +14,6 @@ function snapLogin() {
 }
 
 function snapUpload() {
-    let username = cloud.getCurrentUser((response) => {return response}, (response) => {
-        alert("Username Failed!");
-    });
-
     let projectName = document.getElementById("projectName").value;
     let file = document.getElementById("file").files[0];
 
@@ -29,20 +25,8 @@ function snapUpload() {
     
     file = reader.readAsText(file);
 
-    console.log(file);
-
-    fetch(`https://cloud.snap.berkeley.edu/api/v1/projects/${username}/${projectName}`, {
-        method: "POST", 
-        mode: "cors",
-        body: JSON.stringify({
-            xml: file,
-            notes: 'Uploaded from Studygiggle.'
-        })
-    }).then(res => res.json())
-      .then((json) => {
-        console.log(json);
-    })
-      .catch((err) => {
-        console.log(err);
-    })
+    cloud.saveProject(projectName, {xml: file, media: "", thumbnail: "", notes: "Uploaded with Studygiggle."},
+        (response) => {alert("Project Uploaded."); console.log(response);},
+        (response) => {alert("Project Upload Fail."); console.log(response);}
+    );
 }
