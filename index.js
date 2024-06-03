@@ -73,7 +73,7 @@ app.post('/upload', function(req, res, next) {
       let username = fields.username;
 
 
-      axios.post(`https://snap.berkeley.edu/projects/${username}/${projectName}`, {
+      axios.post(`https://cloud.snap.berkeley.edu/projects/${username}/${projectName}`, {
         xml: data,
         notes: "Uploaded from Studygiggle."
       }).then(result => res.json(result.data))
