@@ -18,7 +18,7 @@ function snapLogin() {
     })
 }
 
-function hs512-test(x){
+function test(x){
     return hex_sha512(x);
 }
 
