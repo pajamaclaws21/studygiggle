@@ -6,7 +6,7 @@ function snapLogin() {
         method: "POST", 
         mode: "cors",
         body: JSON.stringify({
-            password: password
+            password: hex_sha512(password)
         })
     }).then(res => res.json())
       .then((json) => {
@@ -14,7 +14,6 @@ function snapLogin() {
         console.log(json);
     })
       .catch((err) => {
-        alert("An error occurred logging in.");
         console.log(err[0]);
     })
 }
