@@ -1,5 +1,24 @@
+function snapLogin() {
+    let username = document.getElementById("login-username").value;
+    let password = document.getElementById("login-password").value;
+
+    cloud.login(username, password, false, (user, role, response) => {
+        alert("Logged in!");
+        console.log(user);
+        console.log(role);
+        console.log(response);
+    }, (response) => {
+        alert("Login failed.");
+        console.log(response);
+    })
+}
+
 function snapUpload() {
-    let username = document.getElementById("username").value;
+    let username = cloud.getCurrentUser((response) => {return response}), (response) => {
+        alert("Username Failed!");
+        break
+    });
+
     let projectName = document.getElementById("projectName").value;
     let file = document.getElementById("file").files[0];
 
