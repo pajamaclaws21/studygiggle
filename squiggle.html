@@ -12,6 +12,10 @@
   <link rel="manifest" href="https://studygiggle.onrender.com/manifest">
   <link rel="stylesheet" href="https://studygiggle.onrender.com/css/style.css">
 
+  <meta name='snap-cloud-domain' location="https://snap.berkeley.edu">
+  <script type="text/javascript" src="https://snap.berkeley.edu/snap/src/cloud.js"></script>
+  <script>cloud = new Cloud(); cloud.url = baseURL;</script>
+
 </head>
 <body>
 
@@ -34,24 +38,19 @@ SNAP! LOGIN TEST -- attempting to be able to log in with Snap! <br>
 
 <script>
 	function snapLogin() {
-    let username = document.getElementById("login-username").value;
-    let password = document.getElementById("login-password").value;
+		let username = document.getElementById("login-username").value;
+		let password = document.getElementById("login-password").value;
 
-    fetch(`https://cloud.snap.berkeley.edu/api/v1/users/${username}/login`, {
-        method: "POST", 
-        mode: "cors",
-        body: JSON.stringify({
-            password: hex_sha512(password)
-        })
-    }).then(res => res.json())
-      .then((json) => {
-        alert("Recieved response to login.");
-        console.log(json);
-    })
-      .catch((err) => {
-        console.log(err[0]);
-    })
-}
+		cloud.login(username, password, false, (user, role, response) => {
+			alert("Login success");
+			console.log(user);
+			console.log(role);
+			console.log(response);
+		}, (response) => {
+			alert("Login failed");
+			console.log(response);
+		})
+	}
 </script>
 
 <label for="login-username">Snap! Username:</label>
