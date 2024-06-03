@@ -13,7 +13,7 @@ function snapUpload() {
 
     console.log(file);
 
-    fetch(`https://cloud.snap.berkeley.edu/projects/${username}/${projectName}`, {
+    fetch(`https://cloud.snap.berkeley.edu/api/v1/projects/${username}/${projectName}`, {
         method: "POST", 
         mode: "cors",
         body: JSON.stringify({
