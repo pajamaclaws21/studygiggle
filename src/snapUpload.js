@@ -22,11 +22,9 @@ function snapUpload() {
         })
     }).then(res => res.json())
       .then((json) => {
-        alert("Success!");
         console.log(json);
     })
       .catch((err) => {
-        alert("Error");
         console.log(err);
     })
 }
