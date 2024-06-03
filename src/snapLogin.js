@@ -21,3 +21,7 @@ function snapLogin() {
 function hs512-test(x){
     return hex_sha512(x);
 }
+
+function myFunction() {
+    console.log("Hello, World!");
+}
