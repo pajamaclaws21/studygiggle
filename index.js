@@ -72,12 +72,7 @@ app.post('/upload', function(req, res, next) {
       let projectName = fields.projectName;
       let username = fields.username;
 
-
-      axios.post(`https://cloud.snap.berkeley.edu/projects/${username}/${projectName}`, {
-        xml: data,
-        notes: "Uploaded from Studygiggle."
-      }).then(result => res.json(result.data))
-        .catch(err => res.json(err));
+      res.json({result: "/upload has been taken down for now while i do stuff"});
       
 
     } catch (err) {
