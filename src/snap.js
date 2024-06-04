@@ -14,13 +14,12 @@ function snapLogin() {
 function snapUpload() {
     let projectName = document.getElementById("projectName").value;
     let file = document.getElementById("file").files[0];
-    let body = {'thumbnail': "...", "notes": "Uploaded by Studygiggle."};
+    let body = {'thumbnail': "...", "media": "...", "notes": "Uploaded by Studygiggle."}; // What should 'media' value be?
 
     const reader = new FileReader();
     reader.addEventListener('loadend', () => {
       const data = reader.result;
       body['xml'] = data;
-      body['media'] = data;
   
       cloud.saveProject(projectName, body,
           (response) => {alert("Project Uploaded."); console.log(response);},
