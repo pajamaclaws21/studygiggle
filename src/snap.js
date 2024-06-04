@@ -23,9 +23,7 @@ function snapUpload() {
     
     file = reader.readAsText(file);
 
-    console.log(file);
-
-    cloud.saveProject(projectName, {xml: file},
+    cloud.saveProject(projectName, `{'xml': '${file}'}`,
         (response) => {alert("Project Uploaded."); console.log(response);},
         (response) => {alert("Project Upload Fail."); console.log(response);}
     );
