@@ -4,8 +4,6 @@ function snapLogin() {
 
     cloud.login(username, password, false, (user, role, response) => {
         alert("Logged in!");
-        console.log(user);
-        console.log(role);
         console.log(response);
     }, (response) => {
         alert("Login failed.");
@@ -24,6 +22,8 @@ function snapUpload() {
     });
     
     file = reader.readAsText(file);
+
+    console.log(file);
 
     cloud.saveProject(projectName, {xml: file},
         (response) => {alert("Project Uploaded."); console.log(response);},
