@@ -14,6 +14,7 @@ function snapLogin() {
 function snapUpload() {
     let projectName = document.getElementById("projectName").value;
     let file = document.getElementById("file").files[0];
+    let body = {};
 
     const reader = new FileReader();
     reader.addEventListener('loadend', () => {
@@ -23,9 +24,11 @@ function snapUpload() {
     
     file = reader.readAsText(file);
 
-    console.log({xml: file});
+    body['xml'] = file;
 
-    cloud.saveProject(projectName, {'xml': file},
+    console.log(body);
+
+    cloud.saveProject(projectName, body,
         (response) => {alert("Project Uploaded."); console.log(response);},
         (response) => {alert("Project Upload Fail."); console.log(response);}
     );
