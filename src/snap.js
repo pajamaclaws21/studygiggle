@@ -19,17 +19,13 @@ function snapUpload() {
     const reader = new FileReader();
     reader.addEventListener('loadend', () => {
       const data = reader.result;
-      console.log(data);
+      body['xml'] = data;
+  
+      cloud.saveProject(projectName, body,
+          (response) => {alert("Project Uploaded."); console.log(response);},
+          (response) => {alert("Project Upload Fail."); console.log(response);}
+      );
     });
     
-    file = reader.readAsText(file);
-
-    body['xml'] = file;
-
-    console.log(body);
-
-    cloud.saveProject(projectName, body,
-        (response) => {alert("Project Uploaded."); console.log(response);},
-        (response) => {alert("Project Upload Fail."); console.log(response);}
-    );
+    reader.readAsText(file);
 }
