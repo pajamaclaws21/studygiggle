@@ -14,7 +14,7 @@ function snapLogin() {
 function snapUpload() {
     let projectName = document.getElementById("projectName").value;
     let file = document.getElementById("file").files[0];
-    let body = {};
+    let body = {'thumbnail': "...", "media": "...", "notes": "Uploaded by Studygiggle."};
 
     const reader = new FileReader();
     reader.addEventListener('loadend', () => {
