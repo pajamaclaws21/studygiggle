@@ -59,6 +59,10 @@ app.get('/manifest', function(req, res) {
   res.sendFile(__dirname + "/site.webmanifest");
 });
 
+app.get('/redirect/:thing', functinon(req, res) {
+  res.send(req.params.thing);
+});
+
 app.post('/upload', function(req, res, next) {
   const form = formidable({});
 
