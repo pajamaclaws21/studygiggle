@@ -59,7 +59,7 @@ app.get('/manifest', function(req, res) {
   res.sendFile(__dirname + "/site.webmanifest");
 });
 
-app.get('/redirect/:thing', functinon(req, res) {
+app.get('/redirect/:thing', function(req, res) {
   res.send(req.params.thing);
 });
 
